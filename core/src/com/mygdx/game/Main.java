@@ -44,5 +44,6 @@ public class Main extends Game {
 		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),1));
 		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),2));
 		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));
+		// Добавил тестовый комментарий
 	}
 }
