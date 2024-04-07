@@ -13,6 +13,7 @@ public class EnemyWithBow extends Entety{
     private float healthEnemyBow;
     private float speedEnemyBow;
     private Circle boundsEnemyBow;
+    private Circle bbEnemy;
     private float radius=64;
     public EnemyWithBow(Point2D pos,int Rang){
         switch (Rang){
@@ -20,6 +21,7 @@ public class EnemyWithBow extends Entety{
                 imgEnemyBow=new Texture("Enemy1.jpg");
                 healthEnemyBow=20;
                 speedEnemyBow=6;
+                bbEnemy=new Circle(pos,radius*2*3);
                 break;
             case 2:
                 imgEnemyBow=new Texture("Enemy1.jpg");
@@ -40,8 +42,8 @@ public class EnemyWithBow extends Entety{
         positionEnemyBow=pos;
         boundsEnemyBow=new Circle(positionEnemyBow,radius);
         directionEnemyBow=new Point2D(0,0);
-        directionEnemyBow.setX((float) Math.sin(Math.toRadians(Math.random()*360)));
-        directionEnemyBow.setY((float) Math.cos(Math.toRadians(Math.random()*360)));
+        //directionEnemyBow.setX((float) Math.sin(Math.toRadians(Math.random()*360)));
+        //directionEnemyBow.setY((float) Math.cos(Math.toRadians(Math.random()*360)));
     }
     @Override
     public void draw(SpriteBatch batch) {
@@ -54,8 +56,24 @@ public class EnemyWithBow extends Entety{
         if(positionEnemyBow.getX()-radius<0)directionEnemyBow.setX(-directionEnemyBow.getX());
         if(positionEnemyBow.getY()+radius> Main.Height)directionEnemyBow.setY(-directionEnemyBow.getY());
         if(positionEnemyBow.getY()-radius<0)directionEnemyBow.setY(-directionEnemyBow.getY());
-
+        if(bbEnemy.isConteins(Player.position)){
+            attack();
+        }else if(!(bbEnemy.isConteins(Player.position))){
+            directionEnemyBow.setPoint(0,0);
+        }
         positionEnemyBow.add(directionEnemyBow.getX()*speedEnemyBow,directionEnemyBow.getY()*speedEnemyBow);
 
+    }
+    public void attack(){
+        float xs=Math.abs(positionEnemyBow.getX()-Player.position.getX());
+        float ys=Math.abs(positionEnemyBow.getY()-Player.position.getY());
+        float ds= (float) Math.sqrt(xs*xs+ys*ys);
+        if (ds<64){
+            directionEnemyBow.setPoint(0,0);
+        }else if(ds>64) {
+            directionEnemyBow.setPoint(-(xs / ds), -(ys / ds));
+        }
+        //positionEnemyBow.setX(100);
+        //positionEnemyBow.setY(100);
     }
 }

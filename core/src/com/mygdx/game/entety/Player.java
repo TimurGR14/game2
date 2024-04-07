@@ -7,7 +7,7 @@ import com.mygdx.game.settings.Circle;
 import com.mygdx.game.settings.Point2D;
 
 public class Player extends Entety {
-    public Point2D position;
+    public static Point2D position;
     float speed=7;
     float side=128;
     int health=100;
@@ -41,4 +41,5 @@ public class Player extends Entety {
     public void setDirection(Point2D dir){
         direction=dir;
     }
+
 }
