@@ -41,7 +41,7 @@ public class Main extends Game {
 		joostikBullet=new JoostikPlayer(circle,stick,new Point2D(Widith/5,Height/3),Height/5);
 		bulletGenerator=new BulletGenerator();
 		enemyWithBows=new Array<EnemyWithBow>();
-		enemyWithBows.add(new EnemyWithBow(new Point2D(700,700),1));
+		enemyWithBows.add(new EnemyWithBow(new Point2D(900,700),1));
 		/**
 		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),2));
 		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));

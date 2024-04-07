@@ -21,7 +21,7 @@ public class EnemyWithBow extends Entety{
                 imgEnemyBow=new Texture("Enemy1.jpg");
                 healthEnemyBow=20;
                 speedEnemyBow=6;
-                bbEnemy=new Circle(pos,radius*2*3);
+                bbEnemy=new Circle(pos,radius*2*5);
                 break;
             case 2:
                 imgEnemyBow=new Texture("Enemy1.jpg");
@@ -65,8 +65,8 @@ public class EnemyWithBow extends Entety{
 
     }
     public void attack(){
-        float xs=Math.abs(positionEnemyBow.getX()-Player.position.getX());
-        float ys=Math.abs(positionEnemyBow.getY()-Player.position.getY());
+        float xs=positionEnemyBow.getX()-Player.position.getX();
+        float ys=positionEnemyBow.getY()-Player.position.getY();
         float ds= (float) Math.sqrt(xs*xs+ys*ys);
         if (ds<64){
             directionEnemyBow.setPoint(0,0);
