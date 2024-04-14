@@ -10,13 +10,13 @@ public class Bullet extends  Entety{
     private Texture imgBullet;
     private Point2D pos;
     private Point2D dir;
-    float speed=20;
+    float speed=50;
     float radiusBullet=32;
     private Circle boundsBullet;
     public boolean isOut;
 
     public Bullet(Point2D pos,Point2D dir){
-        imgBullet=new Texture("Bullet.jpg");
+        imgBullet=new Texture("stick.jpg");
         this.pos=new Point2D(pos);
         this.dir=new Point2D(dir);
         boundsBullet=new Circle(pos,radiusBullet);
@@ -31,5 +31,9 @@ public class Bullet extends  Entety{
 
         pos.add(dir.getX()*speed,dir.getY()*speed);
         boundsBullet.poso.setPoint(pos);
+    }
+
+    public Point2D getPos() {
+        return pos;
     }
 }

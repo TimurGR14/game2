@@ -12,30 +12,33 @@ public class EnemyWithBow extends Entety{
     private Point2D directionEnemyBow;
     private float healthEnemyBow;
     private float speedEnemyBow;
-    private Circle boundsEnemyBow;
+    public static Circle boundsEnemyBow;
     private Circle bbEnemy;
     private float radius=64;
     public EnemyWithBow(Point2D pos,int Rang){
         switch (Rang){
             case 1:
                 imgEnemyBow=new Texture("Enemy1.jpg");
-                healthEnemyBow=20;
+                boundsEnemyBow=new Circle(pos,radius);
+                healthEnemyBow=50;
                 speedEnemyBow=6;
                 bbEnemy=new Circle(pos,radius*2*5);
                 break;
             case 2:
-                imgEnemyBow=new Texture("Enemy1.jpg");
-                healthEnemyBow=40;
+                imgEnemyBow=new Texture("Enemy2.jpg");
+                healthEnemyBow=80;
                 speedEnemyBow=3;
+                boundsEnemyBow=new Circle(pos,radius);
+                bbEnemy=new Circle(pos,radius*4);
                 break;
             case 3:
                 imgEnemyBow=new Texture("Enemy1.jpg");
-                healthEnemyBow=15;
+                healthEnemyBow=30;
                 speedEnemyBow=13;
                 break;
             default:
                 imgEnemyBow=new Texture("Enemy1.jpg");
-                healthEnemyBow=25;
+                healthEnemyBow=60;
                 speedEnemyBow=9;
                 break;
         }
@@ -58,22 +61,29 @@ public class EnemyWithBow extends Entety{
         if(positionEnemyBow.getY()-radius<0)directionEnemyBow.setY(-directionEnemyBow.getY());
         if(bbEnemy.isConteins(Player.position)){
             attack();
-        }else if(!(bbEnemy.isConteins(Player.position))){
-            directionEnemyBow.setPoint(0,0);
         }
+        /**else if(!(bbEnemy.isConteins(Player.position))){
+            directionEnemyBow.setPoint(0,0);
+        }**/
         positionEnemyBow.add(directionEnemyBow.getX()*speedEnemyBow,directionEnemyBow.getY()*speedEnemyBow);
+
 
     }
     public void attack(){
         float xs=positionEnemyBow.getX()-Player.position.getX();
         float ys=positionEnemyBow.getY()-Player.position.getY();
         float ds= (float) Math.sqrt(xs*xs+ys*ys);
+        /**
         if (ds<64){
             directionEnemyBow.setPoint(0,0);
         }else if(ds>64) {
             directionEnemyBow.setPoint(-(xs / ds), -(ys / ds));
-        }
-        //positionEnemyBow.setX(100);
-        //positionEnemyBow.setY(100);
+        }**/
+        directionEnemyBow.setPoint(-(xs / ds), -(ys / ds));
+    }
+    public float getHealthEnemyBow(){return healthEnemyBow;}
+
+    public void setHealthEnemyBow(float healthEnemyBow) {
+        this.healthEnemyBow = healthEnemyBow;
     }
 }

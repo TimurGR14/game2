@@ -42,13 +42,13 @@ public class Main extends Game {
 		bulletGenerator=new BulletGenerator();
 		enemyWithBows=new Array<EnemyWithBow>();
 		enemyWithBows.add(new EnemyWithBow(new Point2D(900,700),1));
-		/**
-		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),2));
-		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));
-		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));
-		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));
-		enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),3));
-		 **/
+
+		enemyWithBows.add(new EnemyWithBow(new Point2D(1500,900),1));
+		enemyWithBows.add(new EnemyWithBow(new Point2D(100,500),2));
+		//enemyWithBows.add(new EnemyWithBow(new Point2D(100,100),1));
+		//enemyWithBows.add(new EnemyWithBow(new Point2D(700,900),1));
+		//enemyWithBows.add(new EnemyWithBow(new Point2D(400,200),1));
+
 		// Добавил тестовый комментарий
 	}
 }

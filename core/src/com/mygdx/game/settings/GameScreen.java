@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.Main;
+import com.mygdx.game.entety.Bullet;
+import com.mygdx.game.entety.EnemyWithBow;
 
 public class GameScreen implements Screen {
     private Main main;
@@ -108,14 +110,28 @@ public class GameScreen implements Screen {
         Main.player.update();
         Main.bulletGenerator.update(Main.joostikBullet);
         for(int j=0;j<Main.bullets.size;j++){Main.bullets.get(j).update();if (Main.bullets.get(j).isOut)Main.bullets.removeIndex(j);}
-        for(int k=0;k<Main.enemyWithBows.size;k++)Main.enemyWithBows.get(k).update();
+        for(int k=0;k<Main.enemyWithBows.size;k++){Main.enemyWithBows.get(k).update();
+            /**for(int l=0;l<Main.bullets.size;l++){
+                if(Main.enemyWithBows.get(k).boundsEnemyBow.isConteins(Main.bullets.get(l).getPos())){
+                    Main.enemyWithBows.get(k).setHealthEnemyBow(Main.enemyWithBows.get(k).getHealthEnemyBow()-10);
+                    Main.bullets.removeIndex(l);
+                }
+                if (Main.enemyWithBows.get(k).getHealthEnemyBow()==0){Main.enemyWithBows.removeIndex(k);}
+            }
+             отслеживаю касание пули и нанесение урона
+             нужна задержка при выстреливании пули
+             **/
+        }
     }
     public void GameRender(SpriteBatch batch){
         Main.player.draw(batch);
         Main.joostikPlayer.draw(batch);
         Main.joostikBullet.draw(batch);
-        for(int j=0;j<Main.bullets.size;j++)Main.bullets.get(j).draw(batch);
-        for(int l=0;l<Main.enemyWithBows.size;l++)Main.enemyWithBows.get(l).draw(batch);
+        for(int j=0;j<Main.bullets.size;j++){Main.bullets.get(j).draw(batch);
+        }
+        for(int l=0;l<Main.enemyWithBows.size;l++){Main.enemyWithBows.get(l).draw(batch);
+
+        }
     }
     //System.nanoTime();
     @Override
